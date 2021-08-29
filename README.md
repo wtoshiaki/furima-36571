@@ -1,24 +1,68 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column                | Type   | Options     |
+| ------------------    | ------ | ----------- |
+| email                 | string | null: false |
+| encrypted_password    | string | null: false |
+| password_confiramation| string | null: false |
+| first_name            | string | null: false |
+| fist_name kana        |string  | null: false |
+| family_name           | string | null: false |
+| family_name kana      | string | null: false |
+| birthday date         | string | null: false |
 
-* Ruby version
+  
+### Association
 
-* System dependencies
+-has_many :items
+-has_many :order
 
-* Configuration
+## items テーブル
 
-* Database creation
+| Column             | Type       | Options           |
+| ------------------ | ---------- | ----------------- |
+| titile             | string     | null: false       |
+| text               | text       | null: false       |
+| category_id        | refarences | foreign_key: tru  |
+| sales              | refarences | foreign_key: true |
+| fee                | string     | null: false       |
+| prefecter          | text       | null: false       |
+| schedaled          | text       | null: false       |
+| price              | integer    | null: false       |
+| user_id            | refarences | foreign_key: true |
 
-* Database initialization
+### Association
 
-* How to run the test suite
+-belongs_to :user
+-has_many :order
 
-* Services (job queues, cache servers, search engines, etc.)
+## orders テーブル
 
-* Deployment instructions
+| Column             | Type       | Options           |
+| ------------------ | ---------- | ----------------- |
+| user_id            | references | foreign_key: true |
+| items_id           | references | foreign_key: true |
 
-* ...
+### Association
+-belongs_to :user 
+-belongs_to :item 
+-has_one :addres
+
+
+## addres テーブル
+
+| Column                | Type   | Options     |
+| ------------------    | ------ | ----------- |
+| postal_code           | integer | null: false |
+| prefecture            | string | null: false |
+| city                  | string | null: false |
+| addresses             | string | null: false |
+| building              |string  | null: false |
+| phone_number          | string | null: false |
+| user_id               | string | null: false |
+| items_id              | string | null: false |
+
+### Association
+-belongs_to :order 
