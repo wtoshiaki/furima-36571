@@ -2,23 +2,23 @@ class ItemsController < ApplicationController
 
   before_action :move_to_index, except: [:index]
   
-  def index
+  #def index
     
-  end
+  #end
 
-  def new
+  #def new
     
-  end
+  #end
 
-  def create
+  #def create
     
-  end
+  #end
 
 
-  private
-  def item_params
-    params.require(:tweet).permit(:name, :image, :text)
-  end
+  #private
+  #def item_params
+    #params.require(:tweet).permit(:name, :image, :text)
+  #end
 
 
   def move_to_index
