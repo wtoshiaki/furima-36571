@@ -75,6 +75,11 @@ RSpec.describe OrderAddress, type: :model do
         @user_item.valid?
         expect(@user_item.errors.full_messages).to include("Item can't be blank")
       end
+      it "tokenが空では登録できないこと" do
+        @user_item.token = nil
+        @user_item.valid?
+        expect(@user_item.errors.full_messages).to include("Token can't be blank")
+      end
     end
   end
 end
